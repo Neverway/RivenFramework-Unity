@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:editor="UnityEditor.UIElements" xmlns:engine="UnityEngine.UIElements" xmlns="UnityEditor.Overlays" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:editor="UnityEditor.UIElements" 
+           xmlns:engine="UnityEngine.UIElements" 
+           xmlns="UnityEditor.Overlays" 
+           elementFormDefault="qualified" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="UnityEngine.UIElements.xsd" namespace="UnityEngine.UIElements" />
+
+  <!-- TabButtonType: Enhanced with new attributes for richer tab functionality -->
   <xs:complexType name="TabButtonType">
     <xs:complexContent mixed="false">
       <xs:restriction base="engine:VisualElementType">
@@ -19,11 +25,16 @@
         <xs:attribute default="" name="style" type="xs:string" use="optional" />
         <xs:attribute default="" name="text" type="xs:string" use="optional" />
         <xs:attribute default="" name="target" type="xs:string" use="optional" />
+        <!-- New attributes for enhanced functionality -->
+        <xs:attribute default="" name="icon" type="xs:string" use="optional" />
+        <xs:attribute default="false" name="closable" type="xs:boolean" use="optional" />
         <xs:anyAttribute processContents="lax" />
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="TabButton" substitutionGroup="engine:VisualElement" type="TabButtonType" />
+
+  <!-- TabbedViewType: Enhanced with new attributes for tabbed view customization -->
   <xs:complexType name="TabbedViewType">
     <xs:complexContent mixed="false">
       <xs:restriction base="engine:VisualElementType">
@@ -40,9 +51,24 @@
         <xs:attribute default="" name="class" type="xs:string" use="optional" />
         <xs:attribute default="" name="content-container" type="xs:string" use="optional" />
         <xs:attribute default="" name="style" type="xs:string" use="optional" />
+        <!-- New attributes for enhanced functionality -->
+        <xs:attribute default="0" name="selected-index" type="xs:int" use="optional" />
+        <xs:attribute default="top" name="tab-position" type="xs:string" use="optional" />
         <xs:anyAttribute processContents="lax" />
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="TabbedView" substitutionGroup="engine:VisualElement" type="TabbedViewType" />
 </xs:schema>
+<TabbedView selected-index="1" tab-position="top">
+  <TabButton text="Tab 1" icon="icon1.png" closable="true" target="content1">
+    <engine:VisualElement class="icon-style" />
+  </TabButton>
+  <TabButton text="Tab 2" icon="icon2.png" target="content2" />
+  <engine:VisualElement name="content1" style="display: none;">
+    <!-- Content for Tab 1 -->
+  </engine:VisualElement>
+  <engine:VisualElement name="content2">
+    <!-- Content for Tab 2 -->
+  </engine:VisualElement>
+</TabbedView>
