@@ -452,9 +452,8 @@ public class GI_NetworkManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(spawnBroadcastPacket.OwnerName))
         {
-            var pawn = spawnedObject.GetComponent<FeKaPawn_Base>();
-            if (pawn != null)
-                pawn.networkPlayerName = spawnBroadcastPacket.OwnerName;
+            var pawn = spawnedObject.GetComponent<Pawn>();
+            if (pawn != null) pawn.networkPlayerName = spawnBroadcastPacket.OwnerName;
         }
         if (netTransform != null && netTransform.hasAuthority
             && pendingSpawnCallbacks.TryGetValue(spawnBroadcastPacket.RequestId, out var spawnCallback))

@@ -4,7 +4,7 @@
 // Notes:
 //
 //=============================================================================
-
+/*
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -894,4 +894,4 @@ public struct MapNodeSprite
 {
     public bool exitNorth, exitEast, exitWest, exitSouth;
     public Sprite sprite;
-}
+}*/

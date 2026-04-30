@@ -1,6 +1,6 @@
 //===================== (Neverway 2024) Written by Liz M. =====================
 //
-// Purpose:
+// Purpose: Capture the current view in-game and save it as a png 
 // Notes:
 //
 //=============================================================================
@@ -8,22 +8,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class Logic_Door : MonoBehaviour
+namespace Neverway.Framework
+{
+public class Screenshot : MonoBehaviour
 {
     //=-----------------=
     // Public Variables
     //=-----------------=
-    public LogicInput<bool> input = new(false);
-    public UnityEvent onPowered;
-    public UnityEvent onUnpowered;
 
 
     //=-----------------=
     // Private Variables
     //=-----------------=
-    
 
 
     //=-----------------=
@@ -34,25 +31,30 @@ public class Logic_Door : MonoBehaviour
     //=-----------------=
     // Mono Functions
     //=-----------------=
-    private void Start()
+
+    void Update()
     {
-        // TODO: CallOnSourceChange needs HasLogicOutputSource to fix possible null refs for unlinked logic I/Os
-        // Using this 'if' statement as a quick fix for now ~Liz
-        if (input.HasLogicOutputSource is false) return;
-        input.CallOnSourceChanged(Toggle);
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKeyDown(KeyCode.C))
+        {
+            StartCoroutine(TakeScreenShot());
+        }
+    }
+
+    IEnumerator TakeScreenShot()
+    {
+        yield return new WaitForEndOfFrame();
+        var file = $"{Application.persistentDataPath}/{Application.identifier}-{Application.version}-{System.DateTime.Now.ToString("MM-dd-yy (HH-mm-ss)")}.png";
+        DevConsole.Log($"Screenshot saved '{file}'", "CAM");
+        ScreenCapture.CaptureScreenshot(file);
     }
 
     //=-----------------=
     // Internal Functions
     //=-----------------=
-    private void Toggle()
-    {
-        if (input.Get()) onPowered.Invoke();
-        else onUnpowered.Invoke();
-    }
 
 
     //=-----------------=
     // External Functions
     //=-----------------=
+}
 }

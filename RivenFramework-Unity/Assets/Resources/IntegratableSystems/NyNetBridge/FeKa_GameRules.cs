@@ -123,13 +123,13 @@ public class FeKa_GameRules : MonoBehaviour
         string resultPrefix = networkManager.protocolMagic + ":RESULTS:";
         if (packet.StartsWith(resultPrefix))
         {
-            var raceManager = GameInstance.Get<GI_RaceManager>();
+            /*var raceManager = GameInstance.Get<GI_RaceManager>();
             if (raceManager != null)
             {
                 string json = packet.Substring(resultPrefix.Length);
                 var resultsPacket = JsonUtility.FromJson<RaceResultsPacket>(json);
                 raceManager.ShowResultsFromServer(resultsPacket);
-            }
+            }*/
             return;
         }
         
@@ -145,7 +145,7 @@ public class FeKa_GameRules : MonoBehaviour
 
             string previousPhase = currentPhase;
             currentPhase = gameState.Phase;
-
+            /*
             if (!receivedFirstState)
             {
                 receivedFirstState = true;
@@ -164,10 +164,10 @@ public class FeKa_GameRules : MonoBehaviour
                     LoadWorldAndThen(gameState.MapName, () => SpawnSpectatorBody());
                 }
                 // Loading finished and the game is now in progress
-			    // the server has spawned the player's kart so the temporary spectator body can be despawned
+                // the server has spawned the player's kart so the temporary spectator body can be despawned
                 else if (gameState.Phase == "InProgress" && previousPhase == "Loading")
                 {
-        
+
                     if (!string.IsNullOrEmpty(pendingCharacterChoice) && pendingCharacterChoice != "spectate")
                     {
                         DespawnSpectatorBody();
@@ -185,7 +185,7 @@ public class FeKa_GameRules : MonoBehaviour
                             }
                         });
                     }
-                    
+
                     pendingCharacterChoice = "";
                     GameInstance.Get<GI_RaceManager>().StartRace();
                 }
@@ -201,7 +201,7 @@ public class FeKa_GameRules : MonoBehaviour
                     DespawnSpectatorBody();
                     StartCoroutine(ShowFighterSelect());
                 }
-            }
+            }*/
 
             OnGameStateReceived?.Invoke(gameState);
             return;

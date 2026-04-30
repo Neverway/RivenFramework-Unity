@@ -9,18 +9,21 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8250020033609799064}
-  - component: {fileID: -6711313317282578331}
-  - component: {fileID: 1828522638123269138}
   - component: {fileID: 2186262665364879735}
   - component: {fileID: 1509201448382192203}
   - component: {fileID: 8734900888977172164}
   - component: {fileID: 1119601117232352500}
   - component: {fileID: 7341293665338298491}
+  - component: {fileID: 6626165610359650688}
+  - component: {fileID: 1467010668408762878}
+  - component: {fileID: 801976210690049862}
   - component: {fileID: 3560332898772487648}
   - component: {fileID: 6747932280233385115}
   - component: {fileID: 4298148357587920968}
+  - component: {fileID: 2240688253217467399}
   - component: {fileID: 1249841930750964347}
   - component: {fileID: 4662360372656819566}
+  - component: {fileID: 5663611723246624689}
   m_Layer: 0
   m_Name: GameInstance
   m_TagString: Untagged
@@ -43,50 +46,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6711313317282578331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4298151654670827244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 387309e836e9cd94085c6924bfd13338, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fc:
-    categories:
-    - categoryName: Music
-      fields:
-      - targetGameObject: {fileID: 4298151654670827244}
-        targetComponent: {fileID: 7341293665338298491}
-        fieldName: currentTrack
-    - categoryName: Application Settings
-      fields:
-      - targetGameObject: {fileID: 4298151654670827244}
-        targetComponent: {fileID: 3560332898772487648}
-        fieldName: dynamicallyFilteredTexturePaths
-      - targetGameObject: {fileID: 4298151654670827244}
-        targetComponent: {fileID: 3560332898772487648}
-        fieldName: currentSettingsData
-    - categoryName: Font
-      fields:
-      - targetGameObject: {fileID: 4298151654670827244}
-        targetComponent: {fileID: 6747932280233385115}
-        fieldName: defaultFont
---- !u!114 &1828522638123269138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4298151654670827244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a238cf3aa2f99a928f4c94136862248, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2186262665364879735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +104,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   widgets:
   - {fileID: 1507811972370413053, guid: 8c9da1ff2c0e3f8819b3be7b04866c01, type: 3}
+  - {fileID: 5675289539813747590, guid: b463dd0fbb47ddea48e274f58e92b316, type: 3}
+  - {fileID: 3989509737889599038, guid: feca747c589702e9786bf0886dfc1210, type: 3}
+  effectText: {fileID: 0}
+  lastCreatedWidget: {fileID: 0}
 --- !u!114 &7341293665338298491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +124,74 @@ MonoBehaviour:
   queuedTrackPlayer: {fileID: 4662360372656819566}
   currentTrack: {fileID: 0}
   queuedTrack: {fileID: 0}
+--- !u!114 &6626165610359650688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298151654670827244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5147100074f7bb056a6cac34f46ab87b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalTextTypeDelay: 0.02
+  skippingTextTypeDelay: 0.01
+  currentTextEvent:
+    frames: []
+    OnFinish:
+      m_PersistentCalls:
+        m_Calls: []
+  _textEventActive: 0
+  textEventActive: 0
+  currentlyPrinting: 0
+  currentTextContent: 
+  currentTextTypeDelay: 0
+  currentFrame: 0
+  performingRegularMarkup: 0
+  performingSpecialMarkup: 0
+  markupStartIndex: 0
+  chatterAudioSource: {fileID: 5663611723246624689}
+  defaultVoice: {fileID: 11400000, guid: 6fed3e39c6b64b0c9a0ba12e4d70d3fd, type: 2}
+  currentTextChatter: {fileID: 0}
+  stopChatterClip: 1
+  chatterFrequency: 4
+  chatterPitchMin: 1
+  chatterPitchMax: 1.5
+  useConsistentChatterLanguage: 1
+--- !u!114 &1467010668408762878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298151654670827244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38957714d16ecd5e09c1c3aed34cb0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layoutSettings:
+    tabs: []
+  references:
+    version: 2
+    RefIds: []
+--- !u!114 &801976210690049862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298151654670827244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7b8a27499ff1cca8311dcac29c7178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugItems:
+  - {fileID: 4920999846726539026, guid: 49c8ce2a1b2740a428c35ff3aeb35d25, type: 3}
+  - {fileID: 4920999846726539026, guid: 57da26f1dca1fe798bc706d37a374288, type: 3}
 --- !u!114 &3560332898772487648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +210,7 @@ MonoBehaviour:
     targetResolution: 0
     windowMode: 0
     enableVysnc: 0
-    fpsLimit: 60
+    fpsLimit: 100
     showFramecounter: 0
     qualityPreset: 3
     quality:
@@ -211,8 +242,8 @@ MonoBehaviour:
     invertVerticalView: 0
     horizontalLookSpeed: 1
     verticalLookSpeed: 0.75
-    joystickLookSensitivity: 0.7
-    mouseLookSensitivity: 0.7
+    joystickLookSensitivity: 0.9
+    mouseLookSensitivity: 0.5
     cameraFov: 90
     hideTextChat: 0
     enablePushToTalk: 0
@@ -238,7 +269,7 @@ MonoBehaviour:
     postprocessingQuality: 1
   mediumQuality:
     resolutionScale: 2
-    shadowQuality: 2
+    shadowQuality: 1
     effectsQuality: 2
     textureQuality: 3
     postprocessingQuality: 2
@@ -259,7 +290,7 @@ MonoBehaviour:
     targetResolution: 0
     windowMode: 0
     enableVysnc: 0
-    fpsLimit: 60
+    fpsLimit: 100
     showFramecounter: 0
     qualityPreset: 3
     quality:
@@ -291,8 +322,8 @@ MonoBehaviour:
     invertVerticalView: 0
     horizontalLookSpeed: 1
     verticalLookSpeed: 0.75
-    joystickLookSensitivity: 0.7
-    mouseLookSensitivity: 0.7
+    joystickLookSensitivity: 0.9
+    mouseLookSensitivity: 0.5
     cameraFov: 90
     hideTextChat: 0
     enablePushToTalk: 0
@@ -309,7 +340,7 @@ MonoBehaviour:
     targetResolution: 0
     windowMode: 0
     enableVysnc: 0
-    fpsLimit: 60
+    fpsLimit: 100
     showFramecounter: 0
     qualityPreset: 3
     quality:
@@ -341,8 +372,8 @@ MonoBehaviour:
     invertVerticalView: 0
     horizontalLookSpeed: 1
     verticalLookSpeed: 0.75
-    joystickLookSensitivity: 0.7
-    mouseLookSensitivity: 0.7
+    joystickLookSensitivity: 0.9
+    mouseLookSensitivity: 0.5
     cameraFov: 90
     hideTextChat: 0
     enablePushToTalk: 0
@@ -354,10 +385,7 @@ MonoBehaviour:
     reduceStrobing: 0
     screenReader: 0
     localeID: 0
-  dynamicallyFilteredTexturePaths:
-  - Materials/Textures/DynamicallyFiltered
-  - Materials/CorGeo/Textures
-  - Models/Materials/DynamiclyFiltered
+  dynamicallyFilteredTexturePaths: []
   debugForceEnableFirstTimeSetup: 0
   audioMixer: {fileID: 24100000, guid: 549b84953554a157688e4ed0cb77d9a7, type: 2}
   cameraPrefab: {fileID: 8932372165829005355, guid: 273f560cf23f789b987aeac1af365c4d,
@@ -377,9 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6bcafdb5faf577bfbd5c03e6fe4e704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentFont: 0
+  currentFont: {fileID: 0}
   defaultFont: {fileID: 11400000, guid: 2c045bfe6fc79dc1cbe7fd011d751e32, type: 2}
   dyslexiaAssistFont: {fileID: 11400000, guid: eb1dbb2ed3db32cc4a3ffcbf6ca1405a, type: 2}
+  widgetManager: {fileID: 1119601117232352500}
 --- !u!114 &4298148357587920968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,6 +614,8 @@ MonoBehaviour:
     keybindSprite: {fileID: 21300000, guid: b571c0032916afc2e8ad7eec55e3c3f5, type: 3}
   - keybindID: escape
     keybindSprite: {fileID: 21300000, guid: f4f8a5bf53891ca2d83d0fd3e1ed5254, type: 3}
+  - keybindID: w
+    keybindSprite: {fileID: 21300000, guid: 75d0ba568e940e4609312ca569a37424, type: 3}
   controllerList:
   - keybindID: buttonNorth
     keybindSprite: {fileID: 21300000, guid: 1c1753620a1d0d642a2b44519d6faa3e, type: 3}
@@ -638,7 +669,35 @@ MonoBehaviour:
     keybindSprite: {fileID: 21300000, guid: c684f127d7412822e947091d5bb6c9b2, type: 3}
   - keybindID: touchpad/y
     keybindSprite: {fileID: 21300000, guid: c684f127d7412822e947091d5bb6c9b2, type: 3}
+  - keybindID: leftStick/up
+    keybindSprite: {fileID: 21300000, guid: aa360d7799e61ad9c8b86c93042f8e4c, type: 3}
+  - keybindID: leftStick/down
+    keybindSprite: {fileID: 21300000, guid: aa360d7799e61ad9c8b86c93042f8e4c, type: 3}
+  - keybindID: leftStick/left
+    keybindSprite: {fileID: 21300000, guid: aa360d7799e61ad9c8b86c93042f8e4c, type: 3}
+  - keybindID: leftStick/right
+    keybindSprite: {fileID: 21300000, guid: aa360d7799e61ad9c8b86c93042f8e4c, type: 3}
+  - keybindID: rightStick/up
+    keybindSprite: {fileID: 21300000, guid: c4294120216fa5929b2184cd8fcdf60f, type: 3}
+  - keybindID: rightStick/down
+    keybindSprite: {fileID: 21300000, guid: c4294120216fa5929b2184cd8fcdf60f, type: 3}
+  - keybindID: rightStick/left
+    keybindSprite: {fileID: 21300000, guid: c4294120216fa5929b2184cd8fcdf60f, type: 3}
+  - keybindID: rightStick/right
+    keybindSprite: {fileID: 21300000, guid: c4294120216fa5929b2184cd8fcdf60f, type: 3}
   currentDeviceID: 1
+--- !u!114 &2240688253217467399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298151654670827244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19ec269d0ad479b9fad4f91afd3aae32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1249841930750964347
 AudioSource:
   m_ObjectHideFlags: 0
@@ -752,6 +811,103 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &5663611723246624689
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298151654670827244}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -3087869200017679957, guid: 549b84953554a157688e4ed0cb77d9a7,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

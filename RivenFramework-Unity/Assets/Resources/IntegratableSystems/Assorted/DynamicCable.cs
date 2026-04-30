@@ -55,7 +55,6 @@ namespace Neverway.Framework.LogicSystem
         private GameObject waypointReference; // Used as the instantiation reference when auto-generating cable
 
         private LineRenderer lineRenderer;
-        private GI_RiftManager riftManager;
 
 
         //=-----------------=
@@ -63,7 +62,6 @@ namespace Neverway.Framework.LogicSystem
         //=-----------------=
         private void Start()
         {
-            riftManager = FindObjectOfType<GI_RiftManager>();
             lineRenderer = GetComponent<LineRenderer>();
             //if (!generateWaypointsUsingLength) GatherWaypoints();
             if (generateWaypointsUsingLength)

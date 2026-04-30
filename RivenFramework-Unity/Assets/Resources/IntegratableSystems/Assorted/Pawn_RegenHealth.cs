@@ -45,7 +45,7 @@ public class Pawn_RegenHealth : MonoBehaviour
 
 
     /*-----[ Internal Functions ]-------------------------------------------------------------------------------------*/
-    private void RegenHealth()
+    private void RegenHealth(DamageInfo _damageInfo)
     {
         StopAllCoroutines();
         StartCoroutine(RegenDelay());

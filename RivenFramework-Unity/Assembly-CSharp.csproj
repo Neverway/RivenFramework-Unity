@@ -95,7 +95,6 @@
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Importers/Quake1/MapWorldConverter.cs" />
      <Compile Include="Assets/Resources/IntegratableSystems/EditorTools/Dev_ActorCarousel.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/CurvedStairBrush.cs" />
-     <Compile Include="Assets/Resources/Scripts/Integratable/Prop_Respawner.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Importers/Quake1/MapVector2.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Core/IDeepCopyable.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Importers/ValveMapFormat2006/VmfPlane.cs" />
@@ -266,7 +265,6 @@
      <Compile Include="Assets/_REMOVE_/Integratables/CorGeo/SignalEventPlayer.cs" />
      <Compile Include="Assets/Resources/IntegratableSystems/NyNetBridge/NetConnect1.0/WB_NetConnect.cs" />
      <Compile Include="Assets/_REMOVE_/Integratables/_Depreciated/UI_Image_EntityEquippedItems.cs" />
-     <Compile Include="Assets/Resources/Scripts/Integratable/Logic_Door.cs" />
      <Compile Include="Assets/Resources/IntegratableSystems/Assorted/Prop_Respawner.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Core/BuildEngine/MeshGroupManager.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Tools/Utilities/Vertex Weld Ops/VertexWeldCentroidOperation.cs" />
@@ -304,9 +302,10 @@
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/LinearFPSCam.cs" />
      <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/ExtensionMethods/EnumerableExtensions.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Importers/Quake1/MapBrushSide.cs" />
-     <Compile Include="Assets/Resources/Scripts/InputActions.cs" />
      <Compile Include="Assets/_REMOVE_/Integratables/CorGeo/GameObject_Billboard.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Core/BuildEngine/Optimizer.cs" />
+     <Compile Include="Assets/Resources/IntegratableSystems/RuntimeDevTools/DebugConsole.cs" />
+     <Compile Include="Assets/Resources/IntegratableSystems/RuntimeDevTools/ILoggable.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Core/MeshExtensions.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Importers/ValveMapFormat2006/VmfSolid.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Importers/UnrealGold/T3dVector3.cs" />

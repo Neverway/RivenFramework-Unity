@@ -74,3 +74,5 @@ public class Opt_Lifetime: MonoBehaviour
         StopAllCoroutines();
     }
 }
+
+public enum DisableType { Destroy, Disable, Event }

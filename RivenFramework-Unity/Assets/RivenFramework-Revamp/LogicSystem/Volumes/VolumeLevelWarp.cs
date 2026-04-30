@@ -56,7 +56,7 @@ public class Volume_Warp : MonoBehaviour
     private IEnumerator Warp(GameObject _target)
     {
         if (!warpExit) yield return null;
-        GameInstance.Get<GI_TransitionManager>().Fadecross(1f, 0.25f);
+        FindObjectOfType<GI_TransitionManager>().Fadecross(1f, 0.25f);
         yield return new WaitForSeconds(0.7f);
         _target.transform.position = warpExit.position + exitOffset;
     }

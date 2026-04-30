@@ -88,13 +88,13 @@ public class Image_EntityPain : MonoBehaviour
             fadeSpeed,
             (value) =>
             {
-                image.color = value;
+                if (image) image.color = value;
             });
         yield return new WaitForSeconds(targetPawn.currentStats.invulnerabilityTime);
         isInPain = false;
     }
 
-    private void OnHurt()
+    private void OnHurt(DamageInfo damageInfo)
     {
         if (!isInPain)
         {

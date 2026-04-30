@@ -7,6 +7,7 @@
 //
 //====================================================================================================================//
 
+using System;
 using RivenFramework;
 using UnityEngine;
 
@@ -32,6 +33,8 @@ public class FPPawn_Player : FPPawn
     private new FPPawnActions action = new FPPawnActions();
     private InputActions.FirstPersonActions inputActions;
     [SerializeField] private GameObject DeathScreenWidget;
+    [SerializeField] private Pawn_Inventory playerInventory;
+    private ApplicationSettings applicationSettings;
     
     #endregion
 
@@ -43,7 +46,7 @@ public class FPPawn_Player : FPPawn
     {
         if (!widgetManager)
         {
-            widgetManager = FindObjectOfType<GI_WidgetManager>();
+            widgetManager = GameInstance.Get<GI_WidgetManager>();
             if (!widgetManager) return;
         }
         isPaused = widgetManager.GetExistingWidget("WB_Pause");
@@ -69,13 +72,13 @@ public class FPPawn_Player : FPPawn
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    
+
     public new void Awake()
     {
         base.Awake();
         
         // Subscribe to events
-        OnPawnDeath += () => { OnDeath(); };
+        OnPawnDeath += OnDeath;
         
         // Setup inputs
         inputActions = new InputActions().FirstPerson;
@@ -83,11 +86,9 @@ public class FPPawn_Player : FPPawn
         
         // Enable the view camera
         action.EnableViewCamera(this, true);
-        
-        // Disable the mouse cursor
-        
     }
 
+    [Todo("Are you able to remove GetComponentInChildren call on Update? ~erry", Owner = "liz")]
     public void Update()
     {
         // Pausing
@@ -115,12 +116,16 @@ public class FPPawn_Player : FPPawn
         }
         
         // Interact 
-        if (inputActions.Interact.WasPressedThisFrame()) action.Interact(this, interactionPrefab, viewPoint.transform);
-        
-        // Throw held object
-        if (inputActions.ItemAction1.WasPressedThisFrame() && physObjectAttachmentPoint.attachedObject)
+        if (inputActions.Interact.WasPressedThisFrame())
         {
-            action.ThrowPhysProp(this);
+            if (physObjectAttachmentPoint.attachedObject)
+            {
+                action.DropPhysProp(this);
+            }
+            else
+            {
+                action.Interact(this, interactionPrefab, viewPoint.transform);
+            }
         }
         
         // Switch item
@@ -128,13 +133,27 @@ public class FPPawn_Player : FPPawn
         if (inputActions.ItemSwapPrevious.WasPressedThisFrame()) action.ItemSwapPrevious(this);
         
         // Use Item
-        var inventory = GetComponentInChildren<Pawn_Inventory>();
-        if (inputActions.ItemAction1.WasPressedThisFrame()) action.ItemUseAction(inventory, 0);
-        if (inputActions.ItemAction2.WasPressedThisFrame()) action.ItemUseAction(inventory, 1);
-        if (inputActions.ItemAction3.WasPressedThisFrame()) action.ItemUseAction(inventory, 2);
-        if (inputActions.ItemAction1.WasReleasedThisFrame()) action.ItemUseAction(inventory, 0, "release");
-        if (inputActions.ItemAction2.WasReleasedThisFrame()) action.ItemUseAction(inventory, 1, "release");
-        if (inputActions.ItemAction3.WasReleasedThisFrame()) action.ItemUseAction(inventory, 2, "release");
+        if (!playerInventory)
+        {
+            throw new Exception("playerInventory reference has not been set in the inspector! The inventory should be on one of the child objects under the player prefab, please manually assign it!");
+        }
+        if (inputActions.ItemAction1.WasPressedThisFrame())
+        {
+            // Throw held object, or Item Use Action 0
+            if (physObjectAttachmentPoint.attachedObject)
+            {
+                action.ThrowPhysProp(this);
+            }
+            else
+            {
+                action.ItemUseAction(playerInventory, 0);
+            }
+        }
+        if (inputActions.ItemAction2.WasPressedThisFrame()) action.ItemUseAction(playerInventory, 1);
+        if (inputActions.ItemAction3.WasPressedThisFrame()) action.ItemUseAction(playerInventory, 2);
+        if (inputActions.ItemAction1.WasReleasedThisFrame()) action.ItemUseAction(playerInventory, 0, "release");
+        if (inputActions.ItemAction2.WasReleasedThisFrame()) action.ItemUseAction(playerInventory, 1, "release");
+        if (inputActions.ItemAction3.WasReleasedThisFrame()) action.ItemUseAction(playerInventory, 2, "release");
     }
 
     public void FixedUpdate()
@@ -159,13 +178,15 @@ public class FPPawn_Player : FPPawn
 
     private void UpdateRotation()
     {
+        if (applicationSettings == null) applicationSettings = GameInstance.Get<ApplicationSettings>();
+        
         // Get the look speed
-        float horizontalLookSpeed = 3; // = applicationSettings.currentSettingsData.horizontalLookSpeed
-        float verticalLookSpeed = 2; // = applicationSettings.currentSettingsData.verticalLookSpeed
+        float horizontalLookSpeed = applicationSettings.currentSettingsData.horizontalLookSpeed;
+        float verticalLookSpeed = applicationSettings.currentSettingsData.verticalLookSpeed;
         
         // Separate multipliers for mouse and joystick
-        float mouseMultiplier = 0.01f;
-        float joystickMultiplier = 0.2f;
+        float mouseMultiplier = applicationSettings.currentSettingsData.mouseLookSensitivity;
+        float joystickMultiplier = applicationSettings.currentSettingsData.joystickLookSensitivity;
 
         // Determine the input method (mouse or joystick)
         bool isUsingMouse = false;
@@ -181,8 +202,8 @@ public class FPPawn_Player : FPPawn
         var multiplier = isUsingMouse ? mouseMultiplier : joystickMultiplier;
         
         // Store the rotation values
-        lookRotation.x -= inputActions.LookAxis.ReadValue<Vector2>().y * (20 * verticalLookSpeed) * multiplier;
-        lookRotation.y += inputActions.LookAxis.ReadValue<Vector2>().x * (20 * horizontalLookSpeed) * multiplier;
+        lookRotation.x -= inputActions.LookAxis.ReadValue<Vector2>().y * (10 * verticalLookSpeed) * (multiplier/10);
+        lookRotation.y += inputActions.LookAxis.ReadValue<Vector2>().x * (10 * horizontalLookSpeed) * (multiplier/10);
         lookRotation.x = Mathf.Clamp(lookRotation.x, -90f, 90f);
     }
     private void ApplyRotation()
@@ -191,16 +212,16 @@ public class FPPawn_Player : FPPawn
     }
 
 
-    private void OnDeath()
+    private void OnDeath(DamageInfo _damageInfo)
     {
         // Drop held props
         if (physObjectAttachmentPoint)
         {
             if (physObjectAttachmentPoint.attachedObject)
             {
-                if (physObjectAttachmentPoint.attachedObject.GetComponent<Object_PhysPickup>())
+                if (physObjectAttachmentPoint.attachedObject.TryGetComponent(out Object_PhysPickup physPickup))
                 {
-                    physObjectAttachmentPoint.attachedObject.GetComponent<Object_PhysPickup>().ToggleHeld();
+                    physPickup.ToggleHeld();
                 }
             }
         }
@@ -211,11 +232,15 @@ public class FPPawn_Player : FPPawn
         widgetManager.AddWidget(DeathScreenWidget);
 
         // Play the death animation
-        if (GetComponent<Animator>()) GetComponent<Animator>().Play("Death");
+        if (TryGetComponent(out Animator animator)) animator.Play("Death");
     }
 
     /*-----[ External Functions ]-------------------------------------------------------------------------------------*/
     /*----------------------------------------------------------------------------------------------------------------*/
+    public bool IsCrouched()
+    {
+        return action.isCrouching;
+    }
 
 
     #endregion

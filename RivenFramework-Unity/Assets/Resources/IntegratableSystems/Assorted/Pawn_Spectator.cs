@@ -46,7 +46,7 @@ public class Pawn_Spectator : Pawn
     private float _pitch = 0f;
 
     /*-----[ Reference Variables ]------------------------------------------------------------------------------------*/
-    private InputActions.FEKAActions inputActions;
+    private InputActions.Freecam3DActions inputActions;
     private Camera _camera;
     public Camera Camera => _camera;
     private GI_WidgetManager widgetManager;
@@ -64,7 +64,7 @@ public class Pawn_Spectator : Pawn
         
         
         // Setup inputs
-        inputActions = new InputActions().FEKA;
+        inputActions = new InputActions().Freecam3D;
         inputActions.Enable();
     }
  
@@ -79,9 +79,6 @@ public class Pawn_Spectator : Pawn
  
     public void Update()
     {
-        
-        
-        
         if (controlMode != ControlMode.LocalPlayer) return;
         
         widgetManager ??= GameInstance.Get<GI_WidgetManager>();
@@ -111,12 +108,12 @@ public class Pawn_Spectator : Pawn
         }
         
         // Pause Game
-        if (inputActions.Pause.WasPressedThisFrame())
+        if (inputActions.Menu.WasPressedThisFrame())
         {
             widgetManager.ToggleWidget("WB_Pause");
         }
 
-        if (inputActions.Playerlist.IsPressed())
+        if (inputActions.Menu.IsPressed())
         {
             var widgetPlayerList = widgetManager.GetExistingWidget("WB_NetPlayerlist");
             if (widgetPlayerList == null)
