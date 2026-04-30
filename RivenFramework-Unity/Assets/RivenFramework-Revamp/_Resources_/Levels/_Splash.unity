@@ -137,6 +137,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Splash
       objectReference: {fileID: 0}
+    - target: {fileID: 3506604004683078554, guid: bb74b14914fb790f4a7cab09370073b2,
+        type: 3}
+      propertyPath: OnPlayAudio.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 164289016}
+    - target: {fileID: 3506604004683078554, guid: bb74b14914fb790f4a7cab09370073b2,
+        type: 3}
+      propertyPath: OnPlayAudio.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506604004683078554, guid: bb74b14914fb790f4a7cab09370073b2,
+        type: 3}
+      propertyPath: OnPlayAudio.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6400741168052174157, guid: bb74b14914fb790f4a7cab09370073b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,11 +202,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2922763227637862303, guid: bb74b14914fb790f4a7cab09370073b2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb74b14914fb790f4a7cab09370073b2, type: 3}
+--- !u!82 &164289016 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7886488601910260331, guid: bb74b14914fb790f4a7cab09370073b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 164289015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &182135701
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +268,7 @@ PrefabInstance:
     - target: {fileID: 5805205767007618456, guid: 266b7e4a539bd7f1ca4600242cd52380,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5805205767007618456, guid: 266b7e4a539bd7f1ca4600242cd52380,
         type: 3}

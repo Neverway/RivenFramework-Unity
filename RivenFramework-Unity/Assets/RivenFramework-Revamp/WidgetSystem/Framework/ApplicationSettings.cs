@@ -252,6 +252,12 @@ public class ApplicationSettings : MonoBehaviour
         File.WriteAllText(configurationFilePath, json); // Save JSON data to file
     }
 
+    public void EraseSettings()
+    {
+        ResetSettings();
+        File.Delete(configurationFilePath);
+    }
+
     /*private void LoadSettings()
     {
         if (File.Exists(configurationFilePath))

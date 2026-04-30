@@ -90,7 +90,8 @@ public class WB_FirstTimeSetup : MonoBehaviour
     
     private IEnumerator FinishFirstTimeSetup()
     {
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         applicationSettings.ApplySettings();
     }
@@ -139,7 +140,7 @@ public class WB_FirstTimeSetup : MonoBehaviour
         currentScreen++;
         // We have reached the end of the first time setup, give the player a second to read the final message
         //  then move on to the next level (which is normally the title or splash screen)
-        if (currentScreen == setupScreens.Length-1)
+        if (currentScreen == setupScreens.Length)
         {
             StartCoroutine(FinishFirstTimeSetup());
         }

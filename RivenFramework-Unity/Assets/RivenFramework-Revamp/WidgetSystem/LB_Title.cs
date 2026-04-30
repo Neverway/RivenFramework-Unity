@@ -5,54 +5,65 @@
 //
 //=============================================================================
 
+using RivenFramework;
 using UnityEngine;
 
-namespace Neverway.Framework.PawnManagement
+public class LB_Title : MonoBehaviour
 {
-    public class LB_Title : MonoBehaviour
+    //=-----------------=
+    // Public Variables
+    //=-----------------=
+
+
+    //=-----------------=
+    // Private Variables
+    //=-----------------=
+
+
+    //=-----------------=
+    // Reference Variables
+    //=-----------------=
+    private GI_WidgetManager widgetManager;
+    [SerializeField] private GameObject titleWidget;
+
+
+    //=-----------------=
+    // Mono Functions
+    //=-----------------=
+    private void Start()
     {
-        //=-----------------=
-        // Public Variables
-        //=-----------------=
-
-
-        //=-----------------=
-        // Private Variables
-        //=-----------------=
-
-
-        //=-----------------=
-        // Reference Variables
-        //=-----------------=
-        private GI_WidgetManager widgetManager;
-        [SerializeField] private GameObject titleWidget;
-
-
-        //=-----------------=
-        // Mono Functions
-        //=-----------------=
-        private void Start()
-        {
-            widgetManager = FindObjectOfType<GI_WidgetManager>();
-            widgetManager.AddWidget(titleWidget);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-        private void Update()
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-
-
-        //=-----------------=
-        // Internal Functions
-        //=-----------------=
-
-
-        //=-----------------=
-        // External Functions
-        //=-----------------=
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        widgetManager = GameInstance.Get<GI_WidgetManager>();
+        print(widgetManager);
+        print(titleWidget);
+        widgetManager.AddWidget(titleWidget);
     }
+
+    private void Update()
+    {
+        if (widgetManager)
+        {
+            if (!widgetManager.GetExistingWidget(titleWidget.name))
+            {
+                widgetManager.AddWidget(titleWidget);
+            }
+        }
+        else
+        {
+            widgetManager = GameInstance.Get<GI_WidgetManager>();
+        }
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+
+    //=-----------------=
+    // Internal Functions
+    //=-----------------=
+
+
+    //=-----------------=
+    // External Functions
+    //=-----------------=
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 911367883527054998}
   - component: {fileID: 1301064606120009362}
   - component: {fileID: 8649991843322933473}
-  - component: {fileID: 3582905633463877623}
+  - component: {fileID: 1472664424718461271}
   m_Layer: 11
   m_Name: DefaultPawn
   m_TagString: Untagged
@@ -145,16 +145,11 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &3582905633463877623
-MonoBehaviour:
+--- !u!81 &1472664424718461271
+AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8932372165829005355}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}

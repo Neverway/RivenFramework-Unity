@@ -59,7 +59,7 @@ public class ApplicationFontSetter : MonoBehaviour
     {
         currentFont = dyslexiaAssistEnabled ? dyslexiaAssistFont : defaultFont;
 
-        foreach (var textElement in FindObjectsOfType<TMP_Text>())
+        foreach (var textElement in FindObjectsOfType<TMP_Text>(true))
         {
             if (textElement.gameObject.GetComponent(typeof(Text_DontOverideFont))) continue;
             textElement.font = currentFont;

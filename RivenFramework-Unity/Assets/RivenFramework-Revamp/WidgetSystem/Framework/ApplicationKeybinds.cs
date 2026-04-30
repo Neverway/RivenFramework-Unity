@@ -164,15 +164,15 @@ public class ApplicationKeybinds : MonoBehaviour
         if (rebindOperation == null || isOperationCompleted)
             yield break; // If already completed or canceled, exit coroutine.
 
-        // Timeout occurred
-        if (!isOperationCompleted)
-        {
-            Debug.LogWarning("Rebind operation timed out.");
-            Destroy(widgetManager.GetExistingWidget("WB_Settings_Controls_Rebinding"));
-            rebindOperation?.Cancel();
-            rebindOperation?.Dispose();
-            rebindOperation = null;
-        }
+            // Timeout occurred
+            if (!isOperationCompleted)
+            {
+                Debug.LogWarning("Rebind operation timed out.");
+                Destroy(widgetManager.GetExistingWidget("WB_Settings_Controls_Rebinding"));
+                rebindOperation?.Cancel();
+                rebindOperation?.Dispose();
+                rebindOperation = null;
+            }
     }
 
     public void SetBinding(string _actionMap, string _action, bool _isComposite)
@@ -196,27 +196,27 @@ public class ApplicationKeybinds : MonoBehaviour
             var action = inputActionAsset.FindActionMap(_actionMap).FindAction(_action);
             print($"_AM [{_actionMap}] _A[{_action}] A[{action}]");
             rebindOperation = action.PerformInteractiveRebinding().Start()
-                .OnCancel(something => { CleanUp(); })
-                .OnComplete(something =>
-                {
-                    isOperationCompleted = true; // Set flag to true if operation completed successfully
-                    StopAllCoroutines();
-                    Destroy(widgetManager.GetExistingWidget("WB_Settings_Controls_Rebinding"));
+            .OnCancel(something => { CleanUp(); })
+            .OnComplete(something =>
+            {
+                isOperationCompleted = true; // Set flag to true if operation completed successfully
+                StopAllCoroutines();
+                Destroy(widgetManager.GetExistingWidget("WB_Settings_Controls_Rebinding"));
 
 
-                    string overrides = inputActionAsset.SaveBindingOverridesAsJson();
-                    PlayerPrefs.SetString("InputBindingOverrides", overrides);
-                    PlayerPrefs.Save();
-                    
-                    // Save
-                    //string device = string.Empty;
-                    //string key = string.Empty;
-                    //action.GetBindingDisplayString(0, out device, out key);
-                    //print("OUTPUT " + "<" + device + ">/" + key);
-                    //action.ChangeBinding(0).WithPath($"<{device}>/{key}");
-                    
-                    CleanUp();
-                });
+                string overrides = inputActionAsset.SaveBindingOverridesAsJson();
+                PlayerPrefs.SetString("InputBindingOverrides", overrides);
+                PlayerPrefs.Save();
+
+                // Save
+                //string device = string.Empty;
+                //string key = string.Empty;
+                //action.GetBindingDisplayString(0, out device, out key);
+                //print("OUTPUT " + "<" + device + ">/" + key);
+                //action.ChangeBinding(0).WithPath($"<{device}>/{key}");
+
+                CleanUp();
+            });
         }
         else
         {
@@ -244,22 +244,22 @@ public class ApplicationKeybinds : MonoBehaviour
                 Debug.LogWarning("No binding found for " + parsedAction);
                 return;
             }
-            
+
             rebindOperation = action.PerformInteractiveRebinding(bindingIndex).Start()
-                .OnCancel(something => { CleanUp(); })
-                .OnComplete(something =>
-                {
-                    isOperationCompleted = true; // Set flag to true if operation completed successfully
-                    StopAllCoroutines();
-                    Destroy(widgetManager.GetExistingWidget("WB_Settings_Controls_Rebinding"));
-                    // Save
-                    string device = string.Empty;
-                    string key = string.Empty;
-                    action.GetBindingDisplayString(bindingIndex, out device, out key);
-                    print("OUTPUT " + "<" + device + ">/" + key);
-                    action.ChangeBinding(bindingIndex).WithPath($"<{device}>/{key}");
-                    CleanUp();
-                });
+            .OnCancel(something => { CleanUp(); })
+            .OnComplete(something =>
+            {
+                isOperationCompleted = true; // Set flag to true if operation completed successfully
+                StopAllCoroutines();
+                Destroy(widgetManager.GetExistingWidget("WB_Settings_Controls_Rebinding"));
+                // Save
+                string device = string.Empty;
+                string key = string.Empty;
+                action.GetBindingDisplayString(bindingIndex, out device, out key);
+                print("OUTPUT " + "<" + device + ">/" + key);
+                action.ChangeBinding(bindingIndex).WithPath($"<{device}>/{key}");
+                CleanUp();
+            });
         }
     }
 

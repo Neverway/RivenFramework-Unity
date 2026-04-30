@@ -5,6 +5,7 @@
 //
 //=============================================================================
 
+using RivenFramework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,6 +19,7 @@ public class LB_Splash : MonoBehaviour
     //=-----------------=
     // Private Variables
     //=-----------------=
+    private bool acceptingInput = true;
 
 
     //=-----------------=
@@ -35,6 +37,14 @@ public class LB_Splash : MonoBehaviour
 
     private void Update()
     {
+        if (!acceptingInput) return;
+        if (Input.GetKey(KeyCode.F4) || Input.GetKey(KeyCode.JoystickButton0))
+        {
+            FindObjectOfType<ApplicationSettings>().EraseSettings();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            acceptingInput = false;
+            return;
+        }
         if (Input.anyKeyDown)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
