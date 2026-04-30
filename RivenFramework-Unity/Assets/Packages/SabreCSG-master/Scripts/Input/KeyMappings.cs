@@ -29,8 +29,13 @@ namespace Sabresaurus.SabreCSG
 		}
 
 
-		//[Header("See http://unity3d.com/support/documentation/ScriptReference/MenuItem.html for shortcut format")]
-		[Header("Top Toolbar")]
+        //[Header("See http://unity3d.com/support/documentation/ScriptReference/MenuItem.html for shortcut format")]
+
+        //---------- CSG HOTFIX START : By Errynei
+        public string ToggleCSGEditMode = "Tab";
+        //---------- END OF HOTFIX
+
+        [Header("Top Toolbar")]
 		public string ToggleMode = "Space";
 		public string ToggleModeBack = "#Space";
 
@@ -41,7 +46,7 @@ namespace Sabresaurus.SabreCSG
         public string ActivateVertexMode = "#v";
         public string ActivatePaintMode = "#p";
 
-		[Header("Main Toolbar")]
+        [Header("Main Toolbar")]
 		public string TogglePosSnapping = "/";
 		public string DecreasePosSnapping = ",";
 		public string IncreasePosSnapping = ".";
@@ -76,7 +81,12 @@ namespace Sabresaurus.SabreCSG
 		[Header("Face Tool")]
 		public string CopyMaterial = "c";
 
-		[Header("Shared between tools")]
+        //---------- CSG HOTFIX START : By Errynei
+        [Header("Material Paint Tool")]
+        public string SetMaterial1 = "1";
+        //---------- END OF HOTFIX
+
+        [Header("Shared between tools")]
 		public string CancelCurrentOperation = "Escape";
 		public string Back = "Backspace";
 		public string Delete = "Delete";

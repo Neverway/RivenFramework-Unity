@@ -2,6 +2,7 @@
 
 using System;
 using System.Reflection;
+using RivenFramework;
 using UnityEngine;
 
     /// <summary>
@@ -48,6 +49,7 @@ using UnityEngine;
         /// <summary>
         /// Cached <see cref="FieldInfo"/> of the referenced field
         /// </summary>
+        [Todo("Maybe fixed? If error happens here, add a new todo describing it please", TodoSeverity.Minor, Owner = "Errynei")]
         public FieldInfo Field
         {
             get
@@ -57,7 +59,8 @@ using UnityEngine;
                     if (IsUndefined)
                         throw new Exception("ComponentFieldReference is not defined, cannot get value");
 
-                    _field = targetComponent.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    _field = targetComponent.GetType().GetField(fieldName, 
+                        BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
                     if (_field == null)
                         throw new Exception($"ComponentFieldReference could not find field {fieldName}");

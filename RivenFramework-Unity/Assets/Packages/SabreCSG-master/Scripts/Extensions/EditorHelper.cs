@@ -41,6 +41,7 @@ namespace Sabresaurus.SabreCSG
 			}
 		}
 
+#pragma warning disable CS0618 //Suppresses console warning about this being obsolete
         /// <summary>
         /// DO NOT USE - only here for compatibility with old third party plugins!
         /// </summary>
@@ -48,6 +49,7 @@ namespace Sabresaurus.SabreCSG
         {
             return HasDelegate(SceneView.onSceneGUIDelegate, targetDelegate);
         }
+#pragma warning restore CS0618
 
         public enum SceneViewCamera { Top, Bottom, Left, Right, Front, Back, Other };
 

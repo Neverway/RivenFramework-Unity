@@ -1,50 +1,69 @@
-//===================== (Neverway 2024) Written by Liz M. =====================
+//==========================================( Neverway 2025 )=========================================================//
+// Author
+//  Liz M.
 //
-// Purpose:
-// Notes:
+// Contributors
 //
-//=============================================================================
+//
+//====================================================================================================================//
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VolumeLevelWarp : MonoBehaviour
+public class Volume_Warp : MonoBehaviour
 {
-    //=-----------------=
-    // Public Variables
-    //=-----------------=
+    #region========================================( Variables )======================================================//
+    /*-----[ Inspector Variables ]------------------------------------------------------------------------------------*/
+    public Transform warpExit;
+    public Vector3 exitOffset;
 
 
-    //=-----------------=
-    // Private Variables
-    //=-----------------=
+    /*-----[ External Variables ]-------------------------------------------------------------------------------------*/
 
 
-    //=-----------------=
-    // Reference Variables
-    //=-----------------=
+    /*-----[ Internal Variables ]-------------------------------------------------------------------------------------*/
 
 
-    //=-----------------=
-    // Mono Functions
-    //=-----------------=
-    private void Start()
+    /*-----[ Reference Variables ]------------------------------------------------------------------------------------*/
+
+
+    #endregion
+
+
+    #region=======================================( Functions )======================================================= //
+
+    /*-----[ Mono Functions ]-----------------------------------------------------------------------------------------*/
+    private void OnTriggerEnter2D(Collider2D other)
     {
-    
+        if (other.CompareTag("Player"))
+        {
+            StartCoroutine(Warp(other.transform.root.gameObject));
+        }
     }
 
-    private void Update()
+    private void OnDrawGizmos()
     {
-    
+        if (!warpExit) return;
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireCube(warpExit.position+exitOffset, transform.localScale);
+        Gizmos.DrawLine(warpExit.position+exitOffset, transform.position);
     }
 
-    //=-----------------=
-    // Internal Functions
-    //=-----------------=
+
+    /*-----[ Internal Functions ]-------------------------------------------------------------------------------------*/
+    private IEnumerator Warp(GameObject _target)
+    {
+        if (!warpExit) yield return null;
+        GameInstance.Get<GI_TransitionManager>().Fadecross(1f, 0.25f);
+        yield return new WaitForSeconds(0.7f);
+        _target.transform.position = warpExit.position + exitOffset;
+    }
 
 
-    //=-----------------=
-    // External Functions
-    //=-----------------=
+    /*-----[ External Functions ]-------------------------------------------------------------------------------------*/
+
+
+    #endregion
 }

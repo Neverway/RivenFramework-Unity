@@ -49,7 +49,7 @@ public class FPPawn_Player : FPPawn
         isPaused = widgetManager.GetExistingWidget("WB_Pause");
         
         // Pause Game
-        if (inputActions.Pause.WasPressedThisFrame())
+        if (inputActions.Menu.WasPressedThisFrame())
         {
             widgetManager.ToggleWidget("WB_Pause");
         }

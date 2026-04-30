@@ -199,7 +199,12 @@ namespace Sabresaurus.SabreCSG
 		{
 			get
 			{
-				if(Tools.viewTool == ViewTool.Orbit)
+                //---------- CSG HOTFIX START : By Errynei
+                if (CSG_HotFix_Settings.FixAltClickCameraRotate && Event.current.alt) 
+					return true;
+                //---------- END OF HOTFIX
+
+                if (Tools.viewTool == ViewTool.Orbit)
 				{
 					return true;
 				}
@@ -278,7 +283,7 @@ namespace Sabresaurus.SabreCSG
 		{
 			get
 			{
-				return false;
+                return false;
 			}
 		}
 
@@ -286,7 +291,7 @@ namespace Sabresaurus.SabreCSG
 		{
 			get
 			{
-				return true;
+                return true;
 			}
 		}
     }

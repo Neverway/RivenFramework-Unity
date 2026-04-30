@@ -15,8 +15,13 @@ namespace Sabresaurus.SabreCSG
 
 		Clip,
 		Draw,
-        Paint,
-	};
+        Paint
+
+        //---------- CSG HOTFIX START : By Errynei
+        ,Mats
+        //---------- END OF HOTFIX
+
+    };
 
     public enum OverrideMode
     {
@@ -397,5 +402,4 @@ namespace Sabresaurus.SabreCSG
         }
     }
 }
-
 #endif

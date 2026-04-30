@@ -47,6 +47,7 @@ public class ApplicationSettings : MonoBehaviour
     //=-----------------=
     private string configurationFilePath;
     public Resolution[] resolutions;
+    private Texture[] filteredTextures;
 
 
     //=-----------------=
@@ -178,7 +179,7 @@ public class ApplicationSettings : MonoBehaviour
 
     private void CheckFPSCounterVisibility()
     {
-        widgetManager = FindObjectOfType<GI_WidgetManager>();
+        widgetManager ??= FindObjectOfType<GI_WidgetManager>();
         switch (currentSettingsData.showFramecounter)
         {
             case true:
@@ -202,38 +203,28 @@ public class ApplicationSettings : MonoBehaviour
     {
         foreach (var texturePath in dynamicallyFilteredTexturePaths)
         {
-            switch (currentSettingsData.quality.textureQuality)
+            filteredTextures ??= Resources.LoadAll<Texture>(texturePath);
+            
+            foreach (var _texture in filteredTextures)
             {
-                case 0:
-                    foreach (var texture in Resources.LoadAll<Texture>(texturePath))
-                    {
-                        texture.filterMode = FilterMode.Point;
-                    }
-                    break;
-                case 1:
-                    foreach (var texture in Resources.LoadAll<Texture>(texturePath))
-                    {
-                        texture.filterMode = FilterMode.Point;
-                    }
-                    break;
-                case 2:
-                    foreach (var texture in Resources.LoadAll<Texture>(texturePath))
-                    {
-                        texture.filterMode = FilterMode.Bilinear;
-                    }
-                    break;
-                case 3:
-                    foreach (var texture in Resources.LoadAll<Texture>(texturePath))
-                    {
-                        texture.filterMode = FilterMode.Bilinear;
-                    }
-                    break;
-                case 4:
-                    foreach (var texture in Resources.LoadAll<Texture>(texturePath))
-                    {
-                        texture.filterMode = FilterMode.Trilinear;
-                    }
-                    break;
+                switch (currentSettingsData.quality.textureQuality)
+                {
+                    case 0:
+                        _texture.filterMode = FilterMode.Point;
+                        break;
+                    case 1:
+                        _texture.filterMode = FilterMode.Point;
+                        break;
+                    case 2:
+                        _texture.filterMode = FilterMode.Bilinear;
+                        break;
+                    case 3:
+                        _texture.filterMode = FilterMode.Bilinear;
+                        break;
+                    case 4:
+                        _texture.filterMode = FilterMode.Trilinear;
+                        break;
+                }
             }
         }
     }
@@ -288,10 +279,17 @@ public class ApplicationSettings : MonoBehaviour
     public void ApplySettings()
     {
         currentSettingsData = new ApplicationSettingsData(bufferedSettingsData);
-        
+
+        if (currentSettingsData.targetResolution >= resolutions.Length)
+        {
+            Debug.LogWarning("Target screen resolution is out of range of available screen resolutions. Fallback: going with first option");
+            currentSettingsData.targetResolution = 0;
+        }
+
         // Resolution
         Screen.SetResolution(resolutions[currentSettingsData.targetResolution].width,
             resolutions[currentSettingsData.targetResolution].height, GetFullscreenMode());
+        
         // Vsync
         switch (currentSettingsData.enableVysnc)
         {
@@ -697,11 +695,11 @@ public class ApplicationSettings : MonoBehaviour
         // Dyslexia Assist
         if (currentSettingsData.dyslexicFriendlyFont)
         {
-            GetComponent<ApplicationFontSetter>().currentFont = 1;
+            GetComponent<ApplicationFontSetter>().SetAppFont(true);
         }
         else
         {
-            GetComponent<ApplicationFontSetter>().currentFont = 0;
+            GetComponent<ApplicationFontSetter>().SetAppFont(false);
         }
 
         // Language

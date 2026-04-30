@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework", "RivenFramework.csproj", "{8c9feb55-197c-c0d9-f4c0-534f1bc09483}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework.Utils.Reflection", "RivenFramework.Utils.Reflection.csproj", "{0ed36f6c-a345-9b8e-2d92-e48d1c7ab0fc}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicValues.Editor", "LogicValues.Editor.csproj", "{d3445975-723f-08ca-5402-8b0b2470c36d}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neverway.Framework.AudioManagement", "Neverway.Framework.AudioManagement.csproj", "{3b7df345-bd9a-eee0-b323-cd18f735389d}"
@@ -27,9 +29,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework.WidgetSystem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicValues", "LogicValues.csproj", "{154b41dc-3a63-edcd-edca-8ed9acc89065}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework.TempResources", "RivenFramework.TempResources.csproj", "{17b1526d-ad34-e881-c815-5f17dc5e2d92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevTools", "DevTools.csproj", "{e84a44d7-e123-927e-054d-25763d8cd9cd}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFrameworkEditor", "RivenFrameworkEditor.csproj", "{151a37ac-f391-173b-590e-1da35887fec1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyInspector", "EasyInspector.csproj", "{7274ea9c-bb1e-53d4-357c-d854942d69c3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyEditorGUI", "EasyEditorGUI.csproj", "{7c0ffd90-ff97-8dee-f013-81d64e206f99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework.ItemSystem", "RivenFramework.ItemSystem.csproj", "{7fdcced8-84e3-3bd8-fceb-7f97a0535f44}"
 EndProject
@@ -43,9 +49,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BzKovSoft.CharacterSlicer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFields", "SimpleFields.csproj", "{a5fb2897-4aaf-1658-be7c-a9e257c41eeb}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFieldsEditor", "SimpleFieldsEditor.csproj", "{0f036705-ccf9-06a1-b516-b17dcd859022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAttributes", "CoreAttributes.csproj", "{6b3c1272-532d-2e12-fdb1-80cccb741992}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework.SoundSystem", "RivenFramework.SoundSystem.csproj", "{8b850d7d-ff16-e78f-1ebe-a52b5e79da48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFieldsEditor", "SimpleFieldsEditor.csproj", "{0f036705-ccf9-06a1-b516-b17dcd859022}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RivenFramework.Utils.Reflection.editor", "RivenFramework.Utils.Reflection.editor.csproj", "{3e06ec83-ba64-6044-4ec7-535012e89bbc}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +74,8 @@ Global
 		{a3115a23-f2fd-12bf-52f4-918bd684c303}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8c9feb55-197c-c0d9-f4c0-534f1bc09483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8c9feb55-197c-c0d9-f4c0-534f1bc09483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ed36f6c-a345-9b8e-2d92-e48d1c7ab0fc}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ed36f6c-a345-9b8e-2d92-e48d1c7ab0fc}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{d3445975-723f-08ca-5402-8b0b2470c36d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{d3445975-723f-08ca-5402-8b0b2470c36d}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3b7df345-bd9a-eee0-b323-cd18f735389d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -78,10 +90,14 @@ Global
 		{dfd8f255-e47d-8247-9c05-2b1823b6ccf0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{154b41dc-3a63-edcd-edca-8ed9acc89065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{154b41dc-3a63-edcd-edca-8ed9acc89065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17b1526d-ad34-e881-c815-5f17dc5e2d92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17b1526d-ad34-e881-c815-5f17dc5e2d92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{e84a44d7-e123-927e-054d-25763d8cd9cd}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{e84a44d7-e123-927e-054d-25763d8cd9cd}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{151a37ac-f391-173b-590e-1da35887fec1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{151a37ac-f391-173b-590e-1da35887fec1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7274ea9c-bb1e-53d4-357c-d854942d69c3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7274ea9c-bb1e-53d4-357c-d854942d69c3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7c0ffd90-ff97-8dee-f013-81d64e206f99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7c0ffd90-ff97-8dee-f013-81d64e206f99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7fdcced8-84e3-3bd8-fceb-7f97a0535f44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7fdcced8-84e3-3bd8-fceb-7f97a0535f44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c00b49fd-84e5-8bb7-74b4-255afb71d1f6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -94,10 +110,14 @@ Global
 		{37048d4b-ea61-7c10-8fea-607907a56d48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{a5fb2897-4aaf-1658-be7c-a9e257c41eeb}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{a5fb2897-4aaf-1658-be7c-a9e257c41eeb}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8b850d7d-ff16-e78f-1ebe-a52b5e79da48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8b850d7d-ff16-e78f-1ebe-a52b5e79da48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0f036705-ccf9-06a1-b516-b17dcd859022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0f036705-ccf9-06a1-b516-b17dcd859022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6b3c1272-532d-2e12-fdb1-80cccb741992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6b3c1272-532d-2e12-fdb1-80cccb741992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8b850d7d-ff16-e78f-1ebe-a52b5e79da48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8b850d7d-ff16-e78f-1ebe-a52b5e79da48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3e06ec83-ba64-6044-4ec7-535012e89bbc}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3e06ec83-ba64-6044-4ec7-535012e89bbc}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

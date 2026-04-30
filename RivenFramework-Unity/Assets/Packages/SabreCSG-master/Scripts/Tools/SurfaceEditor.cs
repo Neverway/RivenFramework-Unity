@@ -276,16 +276,28 @@ namespace Sabresaurus.SabreCSG
                         lastWorldPoint = worldPoint;
                     }
 
+
+                    //---------- CSG HOTFIX START : By Errynei
+                    //Also replaced all "e.shift" in this method with "isHoldingShift"
+                    bool isHoldingShift = e.shift;
+                    //Also replaced all "e.control" in this method with "isHoldingCtrl"
+                    bool isHoldingCtrl = e.control;
+
+                    //Toggles isHoldingShift only if Setting for swapping shift is enabled
+                    bool swapShiftUsage = !isHoldingCtrl && CSG_HotFix_Settings.SwapShiftAndNonShiftControlsForFaceEdit;
+                    isHoldingShift ^= swapShiftUsage;
+                    //---------- END OF HOTFIX (except for mentioned variable replacements)
+
                     // Set the appropiate mode based on whether the user wants to rotate or translate
-                    if (e.control && !e.shift)
+                    if (e.control && !isHoldingShift)
                     {
                         currentMode = Mode.Rotate;
                     }
-                    else if (!e.control && !e.shift)
+                    else if (!e.control && !isHoldingShift)
                     {
                         currentMode = Mode.Translate;
                     }
-                    else if (!e.control && e.shift)
+                    else if (!e.control && isHoldingShift)
                     {
                         QuickSelectMode = QuickSelectModes.Additive;
                         // Detect whether quick mode will select or deselect polygons
@@ -326,7 +338,7 @@ namespace Sabresaurus.SabreCSG
 
                         currentMode = Mode.QuickSelect;
                     }
-                    else if (e.control && e.shift)
+                    else if (e.control && isHoldingShift)
                     {
                         currentMode = Mode.FollowLastFace;
                         OnMouseDragFollowLastFace(sceneView, e);
@@ -480,7 +492,7 @@ namespace Sabresaurus.SabreCSG
                         undoRecorded = true;
                     }
 
-                    TransformUVs(UVUtility.TranslateUV, new UVUtility.TransformData(uvDelta, 0), recordUndo);
+                    TransformUVs(UVUtility.TranslateUV, new UVUtility.TransformData(uvDelta, 0), recordUndo || CSG_HotFix_Settings.FixUVEditingUndoRegistering);
 
                     lastWorldPoint = currentWorldPoint;
 
@@ -572,7 +584,7 @@ namespace Sabresaurus.SabreCSG
                         }
 
                         // Rotate the UV using the supplied angle
-                        RotateAroundCenter(deltaAngle, recordUndo);
+                        RotateAroundCenter(deltaAngle, recordUndo || CSG_HotFix_Settings.FixUVEditingUndoRegistering);
 
                         e.Use();
                     }
@@ -1576,7 +1588,7 @@ namespace Sabresaurus.SabreCSG
 
                         float originalEastScale = SurfaceUtility.GetNorthEastVectors(polygon, matchedBrushes[polygon].transform).EastScale;
 
-                        TransformUVs(polygon, UVUtility.ScaleUV, new UVUtility.TransformData(new Vector2(newEastScale / originalEastScale, 1), 0), false);
+                        TransformUVs(polygon, UVUtility.ScaleUV, new UVUtility.TransformData(new Vector2(newEastScale / originalEastScale, 1), 0), CSG_HotFix_Settings.FixUVEditingUndoRegistering);
                     }
                 }
             }

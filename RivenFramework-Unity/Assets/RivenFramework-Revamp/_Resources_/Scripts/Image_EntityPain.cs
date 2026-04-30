@@ -5,11 +5,9 @@
 //
 //=============================================================================
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using RivenFramework;
-using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +19,7 @@ public class Image_EntityPain : MonoBehaviour
     public Pawn targetPawn;
     public bool findPossessedPawn;
     public float fadeSpeed=1;
+    public float startAlpha=1;
 
 
     //=-----------------=
@@ -48,13 +47,14 @@ public class Image_EntityPain : MonoBehaviour
 
     private void Update()
     {
-        if (findPossessedPawn)
+        if (findPossessedPawn && !targetPawn)
         {
             targetPawn = FindPossessedPawn();
         }
         if (targetPawn && !initialized)
         {
             initialized = true;
+            targetPawn.OnPawnHurt -= OnHurt;
             targetPawn.OnPawnHurt += OnHurt;
         }
         else if (!targetPawn)
@@ -75,15 +75,21 @@ public class Image_EntityPain : MonoBehaviour
     //=-----------------=
     private Pawn FindPossessedPawn()
     {
-        if (FindObjectOfType<GI_PawnManager>().localPlayerCharacter)
-            return FindObjectOfType<GI_PawnManager>().localPlayerCharacter.GetComponent<Pawn>();
+        if (FindObjectOfType<GI_PawnManager>().localPlayerCharacter) return FindObjectOfType<GI_PawnManager>().localPlayerCharacter.GetComponent<Pawn>();
         return null;
     }
 
     private IEnumerator FadeInPain()
     {
         isInPain = true;
-        animator.Play("PainFlash");
+        DOVirtual.Color(
+            new Color(image.color.r, image.color.g, image.color.b, startAlpha), 
+            new Color(image.color.r, image.color.g, image.color.b, 0),
+            fadeSpeed,
+            (value) =>
+            {
+                image.color = value;
+            });
         yield return new WaitForSeconds(targetPawn.currentStats.invulnerabilityTime);
         isInPain = false;
     }

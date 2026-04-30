@@ -8,6 +8,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RivenFramework;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -59,7 +60,10 @@ public class VolumeTriggerEvent : Volume
     { 
         // Call the base class method
         base.OnTriggerEnter(_other);
-        if (pawnsInTrigger.Count + propsInTrigger.Count == 1) onFirstOccupied.Invoke();
+        if (IsOccupied())
+        {
+            onFirstOccupied.Invoke();
+        }
         onOccupied.Set(IsOccupied());
     }
 
@@ -75,49 +79,53 @@ public class VolumeTriggerEvent : Volume
     //=-----------------=
     // Internal Functions
     //=-----------------=
+    [Todo("Setting resetsAutomatically to false keeps logic outputs from ever firing??? Errynei hewlp me!!!!!!!", TodoSeverity.Major, Owner = "Errynei")]
     private bool IsOccupied()
     {
-        if (hasBeenTriggered && resetsAutomatically is false) return false;
+        if (hasBeenTriggered && resetsAutomatically is false)
+        {
+            return false;
+        }
         switch (triggerFilter)
         {
             case TriggerFilter.All:
                 if (pawnsInTrigger.Count != 0 || propsInTrigger.Count != 0)
                 {
+                    hasBeenTriggered = true;
                     return true;
                 }
                 else
                 {
-                    hasBeenTriggered = true;
                     return false;
                 }
             case TriggerFilter.Pawns:
                 if (pawnsInTrigger.Count != 0)
                 {
+                    hasBeenTriggered = true;
                     return true;
                 }
                 else
                 {
-                    hasBeenTriggered = true;
                     return false;
                 }
             case TriggerFilter.Props:
                 if (propsInTrigger.Count != 0)
                 {
+                    hasBeenTriggered = true;
                     return true;
                 }
                 else
                 {
-                    hasBeenTriggered = true;
                     return false;
                 }
             case TriggerFilter.OnlyPlayer:
                 if (GetPlayerInTrigger())
                 {
+                    hasBeenTriggered = true;
                     return true;
                 }
                 else
                 {
-                    hasBeenTriggered = true;
                     return false;
                 }
         }

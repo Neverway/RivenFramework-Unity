@@ -25,9 +25,9 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
-    - _FaceToggle: 0
+    - _FaceToggle: 1
     - _GridAlpha: 0.1
-    - _GridSize: 1
+    - _GridSize: 4
     - _GridStrength: 0.3
     - _GridThickness: 0.03
     - _GridToggle: 1

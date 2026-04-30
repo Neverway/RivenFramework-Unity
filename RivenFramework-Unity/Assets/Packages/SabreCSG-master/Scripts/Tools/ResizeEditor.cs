@@ -378,6 +378,36 @@ namespace Sabresaurus.SabreCSG
             }
         }
 
+
+        //---------- CSG HOTFIX START : By Errynei
+        public bool OnKeyActionFromOtherTools(SceneView sceneView, Event e)
+        {
+            if (!CSG_HotFix_Settings.ResizeModeKeybindsAlsoWorkOnOtherTools)
+                return false;
+
+            if (e.type == EventType.KeyDown && !csgModel.MouseIsHeldOrRecent)
+            {
+                if (KeyMappings.EventsMatch(e, EditorKeyMappings.GetToolViewMapping()))
+                {
+                    OnKeyAction(sceneView, e);
+                    return true;
+                }
+                if (KeyMappings.EventsMatch(e, EditorKeyMappings.GetToolMoveMapping()))
+                {
+                    OnKeyAction(sceneView, e);
+                    return true;
+                }
+                if (KeyMappings.EventsMatch(e, EditorKeyMappings.GetToolRotateMapping()))
+                {
+                    OnKeyAction(sceneView, e);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        //---------- END OF HOTFIX
+
         private void OnKeyAction(SceneView sceneView, Event e)
         {
             if (widgetMode == WidgetMode.Bounds)
