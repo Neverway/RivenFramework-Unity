@@ -45,11 +45,14 @@
     <Analyzer Include="/home/lizband/Unity/Hub/Editor/2022.3.15f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/PixelSpriteUtils/PixelatorShader/Editor/TrimSheetGUI.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors/BrushBaseInspector.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/StairBrushInspector.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/ErryLib/CoreAttributes/Editor/DebugDisplayListAsStringsAttributeDrawer.cs" />
      <Compile Include="Assets/RivenFramework-Revamp/Editor/ToolAssetManager.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors/CSGModelInspector.cs" />
      <Compile Include="Assets/RivenFramework-Revamp/Editor/ToolStripVariant.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/ErryLib/CoreAttributes/Editor/DividerAttributeDrawer.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/ShapeEditorBrushInspector.cs" />
      <Compile Include="Assets/RivenFramework-Revamp/Editor/SceneReferenceDrawer.cs" />
      <Compile Include="Assets/RivenFramework/Scripts/Editor/ToolFrameworkManagerItems.cs" />
@@ -58,41 +61,38 @@
      <Compile Include="Assets/RivenFramework-Revamp/Editor/ToolScatterPlacer.cs" />
      <Compile Include="Assets/Resources/Scripts/Integratable/Editor/CSGMeshCombinerTool.cs" />
      <Compile Include="Assets/RivenFramework/Scripts/Editor/ToolFrameworkManagerActorDatabase.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/PixelSpriteUtils/PixelatorShader/Editor/TrimSheetGUI.cs" />
      <Compile Include="Assets/RivenFramework/Scripts/Editor/ToolFrameworkManagerCharacters.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/ErryLib/ReflectionUtils/Editor/MonoScriptReader.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Compatibility/Editor/UnityEventDrawer.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/ReflectionUtils/Editor/MonoScriptReader.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/CoreAttributes/Editor/BoxDrawer.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/CoreAttributes/Editor/StringAsGUIDAttributePropertyDrawer.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors/CSGBuildContextInspector.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors/BrushGroupInspector.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/AssetBrowserContextMenu.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/PixelSpriteUtils/PixelatorShader/Editor/SpriteLitGUI.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/HollowBoxBrushInspector.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/TextboxSystem/Editor/Char_PortraitEmotionReferenceDrawer.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/TextboxSystem/Editor/Char_PortraitEmotionReferenceDrawer.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/ShapeEditorWindow.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/ErryLib/CoreAttributes/Editor/BoxDrawer.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/TrimBrushInspector.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/PixelSpriteUtils/PixelatorShader/Editor/SpriteLitGUI.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/ErryLib/CoreAttributes/Editor/StringAsGUIDAttributePropertyDrawer.cs" />
      <Compile Include="Assets/RivenFramework/Scripts/Editor/ToolFrameworkManager.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/CoreAttributes/Editor/DebugDisplayListAsStringsAttributeDrawer.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors/KeyMappingsInspector.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/ShapeEditorWindowPopup.cs" />
+     <Compile Include="Assets/Resources/Other/IntegratableSystems/ErryLib/CoreAttributes/Editor/PolymorphicDrawer.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Utilities/UtilityShortcuts.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors/CompoundBrushInspector.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Editor/ExpandPropertiesDrawer.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/CoreAttributes/Editor/PolymorphicDrawer.cs" />
      <Compile Include="Assets/RivenFramework-Revamp/__ERRYNEI/Editor/FetchComponentAttributeHandler.cs" />
      <Compile Include="Assets/RivenFramework/Scripts/Editor/ToolFrameworkManagerProps.cs" />
      <Compile Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor/CurvedStairBrushInspector.cs" />
-     <Compile Include="Assets/Resources/IntegratableSystems/ErryLib/CoreAttributes/Editor/DividerAttributeDrawer.cs" />
      <Folder Include="Assets/Packages/SabreCSG-master/Scripts/Editor/Inspectors" />
      <Folder Include="Assets/RivenFramework-Revamp/__ERRYNEI/Editor" />
      <Folder Include="Assets/Resources/Scripts/Integratable/Editor" />
-     <Folder Include="Assets/Resources/IntegratableSystems/ErryLib/CoreAttributes/Editor" />
+     <Folder Include="Assets/Resources/Other/IntegratableSystems/ErryLib/CoreAttributes/Editor" />
      <Folder Include="Assets/RivenFramework-Revamp/Editor" />
      <Folder Include="Assets/Packages/SabreCSG-master/Scripts/Editor" />
-     <Folder Include="Assets/Resources/IntegratableSystems/PixelSpriteUtils/PixelatorShader/Editor" />
-     <Folder Include="Assets/Resources/IntegratableSystems/ErryLib/ReflectionUtils/Editor" />
-     <Folder Include="Assets/Resources/IntegratableSystems/TextboxSystem/Editor" />
+     <Folder Include="Assets/Resources/Other/IntegratableSystems/PixelSpriteUtils/PixelatorShader/Editor" />
+     <Folder Include="Assets/Resources/Other/IntegratableSystems/ErryLib/ReflectionUtils/Editor" />
+     <Folder Include="Assets/Resources/Other/IntegratableSystems/TextboxSystem/Editor" />
      <Folder Include="Assets/Packages/SabreCSG-master/Scripts/Brushes/CompoundBrushes/Editor" />
      <Folder Include="Assets/Packages/SabreCSG-master/Scripts/Compatibility/Editor" />
      <Folder Include="Assets/RivenFramework/Scripts/Editor" />
@@ -1032,6 +1032,10 @@
       <Project>{ec2bcf95-64bf-125f-d106-ec12a8016db9}</Project>
       <Name>Neverway.Framework.LogicSystem</Name>
     </ProjectReference>
+    <ProjectReference Include="DevTools.csproj">
+      <Project>{e84a44d7-e123-927e-054d-25763d8cd9cd}</Project>
+      <Name>DevTools</Name>
+    </ProjectReference>
     <ProjectReference Include="RivenFramework.LogicSystem.csproj">
       <Project>{756916d5-d3ee-6fef-a1bb-50f8c0f9ad26}</Project>
       <Name>RivenFramework.LogicSystem</Name>
@@ -1091,10 +1095,6 @@
     <ProjectReference Include="RivenFramework.WidgetSystem.csproj">
       <Project>{dfd8f255-e47d-8247-9c05-2b1823b6ccf0}</Project>
       <Name>RivenFramework.WidgetSystem</Name>
-    </ProjectReference>
-    <ProjectReference Include="DevTools.csproj">
-      <Project>{e84a44d7-e123-927e-054d-25763d8cd9cd}</Project>
-      <Name>DevTools</Name>
     </ProjectReference>
     <ProjectReference Include="Neverway.Framework.Cartographer.csproj">
       <Project>{e39674fd-0230-c101-9fec-c610ab55f0a5}</Project>
