@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SplashScreenPlayer : MonoBehaviour
@@ -27,6 +28,7 @@ public class SplashScreenPlayer : MonoBehaviour
     //=-----------------=
     public Animator Animator;
     public AudioSource AudioSource;
+    public UnityEvent OnPlayAudio;
 
 
     //=-----------------=
@@ -41,7 +43,8 @@ public class SplashScreenPlayer : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
         Animator.Play("test");
-        AudioSource.Play();
+        if (AudioSource) AudioSource.Play();
+        OnPlayAudio.Invoke();
         StartCoroutine(WaitForSplash());
     }
 
